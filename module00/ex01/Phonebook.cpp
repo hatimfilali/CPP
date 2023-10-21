@@ -19,7 +19,7 @@ void Phonebook::add(void)
         std::cout << "Warning : you're about to overwrite " << this->_contact[this->_index % 8].GetFirstName() << std::endl;
     while (!std::cin.eof() && str == "")
     {
-        std::cout << "Enter Fisr Name: ";
+        std::cout << "Enter First Name: ";
         if (std::getline(std::cin, str) && str!="")
             this->_contact[this->_index % 8].SetFirstName(str);
     }
@@ -51,7 +51,7 @@ void Phonebook::add(void)
         if (std::getline(std::cin, str) && str != "")
         {
             this->_contact[this->_index%8].SetDarkSecret(str);
-            std::cout << this->_contact[this->_index].GetFirstName() << " Successfully to the phonbook [" << this->_index % 8 + 1 << "/8]" << std::endl;
+            std::cout << this->_contact[this->_index%8].GetFirstName() << " Successfully to the phonbook [" << this->_index % 8 + 1 << "/8]" << std::endl;
         }
     }
     this->_index++;
