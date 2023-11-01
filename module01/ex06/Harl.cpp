@@ -1,5 +1,5 @@
 #include "Harl.hpp"
-
+#include <climits>
 Harl::Harl(std::string filter) {
     levels["DEBUG"] = 1;
     levels["INFO"] = 2;
