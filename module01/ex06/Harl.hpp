@@ -11,13 +11,13 @@ class Harl {
         void info(void);
         void warning(void);
         void error(void);
-        std::map<std::string, int> levels;       
-        typedef void (Harl::*harl_voice) ();
+        void (Harl::*complaints[4])();     
         std::string filter;
         std::string level;
     public:
         Harl(std::string filter);
         ~Harl();
+        enum ComplaintLevel { DEBUG, INFO, WARNING, ERROR };
         void complain(std::string level);
 };
 

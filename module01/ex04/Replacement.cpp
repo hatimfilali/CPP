@@ -11,21 +11,17 @@ Replacement::~Replacement() {
 }
 
 std::string Replacement::Replace(std::string line) {
-    std::string temp;
-    std::string result;
-    for(size_t i = 0; i < line.length(); i++) {
-        temp += line[i];
-        if (temp == str) {
+        std::string result;
+        size_t pos = 0;
+        size_t foundPos;
+
+        while ((foundPos = line.find(str, pos)) != std::string::npos) {
+            result += line.substr(pos, foundPos - pos);
             result += rp;
-            temp.clear();
+            pos = foundPos + str.length();
         }
-        else if (temp.length() >= str.length()) {
-            result += temp.at(0);
-            temp.erase(temp.begin());
-        }
-    }
-    result += temp;
-    return (result);
+        result += line.substr(pos);
+        return result;
 }
 
 void Replacement::CpyandReplace() {

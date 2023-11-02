@@ -1,20 +1,21 @@
 #include "Harl.hpp"
 
 Harl::Harl() {
-    complains_list["DEBUG"] = &Harl::debug;
-    complains_list["INFO"] = &Harl::info;
-    complains_list["WARNING"] = &Harl::warning;
-    complains_list["ERROR"] = &Harl::error;
+    complains[DEBUG] = &Harl::debug;
+    complains[INFO] = &Harl::info;
+    complains[WARNING] = &Harl::warning;
+    complains[ERROR] = &Harl::error;
 }
 
 Harl::~Harl() {
 
 }
 
-void Harl::complain(std::string level) {
-    std::cout << "[" << level << "]: ";
-    void (Harl::*complain) () = complains_list[level];
-    (this->*complain) ();
+void Harl::complain(ComplainLevels level) {
+    std::string Levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+    std::cout << "[" << Levels[level] << "]: ";
+    
+    (this->*complains[level])();
 }
 
 void Harl::debug(void) {

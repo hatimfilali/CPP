@@ -10,12 +10,14 @@ class Harl {
         void info(void);
         void warning(void);
         void error(void);
-        std::map<std::string, void(Harl::*) ()> complains_list;       
+        void (Harl::*complains[4])();     
 
     public:
-        Harl();
+        Harl();make fcl 
+        
         ~Harl();
-        void complain(std::string level);
-};
+        enum ComplainLevels { DEBUG, INFO, WARNING, ERROR };
+        void complain(ComplainLevels level);
+};     
 
 #endif

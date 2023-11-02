@@ -1,37 +1,47 @@
 #include "Harl.hpp"
 #include <climits>
-Harl::Harl(std::string filter) {
-    levels["DEBUG"] = 1;
-    levels["INFO"] = 2;
-    levels["WARNING"] = 3;
-    levels["ERROR"] = 4;
-    this->filter = filter;
-}
+Harl::Harl(std::string filter) : filter(filter) {
+        complaints[DEBUG] = &Harl::debug;
+        complaints[INFO] = &Harl::info;
+        complaints[WARNING] = &Harl::warning;
+        complaints[ERROR] = &Harl::error;
+    }
 
 Harl::~Harl() {
 
 }
 
-void Harl::complain (std::string level) {
-    this->level = level;
-    int filter_lvl = levels[this->filter];
-    filter_lvl = filter_lvl == 0 ? INT_MAX : filter_lvl;
-    int current_level = levels[level];
-        switch (current_level) {
-            case 1:
-                debug();
-            case 2:
-                info();
-            case 3:
-                warning();
-            case 4:
-                error();
+void Harl::complain(std::string level) {
+        this->level = level;
+        int currentLevel = -1;
+
+        if (level == "DEBUG") {
+            currentLevel = DEBUG;
+        } else if (level == "INFO") {
+            currentLevel = INFO;
+        } else if (level == "WARNING") {
+            currentLevel = WARNING;
+        } else if (level == "ERROR") {
+            currentLevel = ERROR;
+        }
+
+        switch (currentLevel) {
+            case DEBUG:
+                (this->*complaints[DEBUG])();
+                // Intentional fall-through 
+            case INFO:
+                (this->*complaints[INFO])();
+                // Intentional fall-through
+            case WARNING:
+                (this->*complaints[WARNING])();
+                // Intentional fall-through
+            case ERROR:
+                (this->*complaints[ERROR])();
                 break;
             default:
                 std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+        }
     }
-}
-
 
 void Harl::debug(void) {
     std::cout << "[DEBUG]" << std::endl;
