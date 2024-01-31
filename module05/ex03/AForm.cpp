@@ -63,12 +63,12 @@ void	AForm::CheckPermision(Bureaucrat const & executor) const
 		throw AForm::GradeTooLowException();
 }
 
+AForm::~AForm () {
+	
+}
 std::ostream &operator<<(std::ostream &os, const AForm &value) {
     os << value.getName() << " , " << (value.getSigned() ? "" : "not ") << "signed, required Grade to sign is "
         << value.getRequiredGradeToSign() << " required grade to execute is " << value.getRequiredGradeToExecute() << std::endl;
     return os;
 }
 
-AForm::~AForm () {
-	
-}
