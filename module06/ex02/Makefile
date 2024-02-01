@@ -1,10 +1,10 @@
-SRC = main.cpp ScalarConcertion.cpp 
+SRC = main.cpp Base.cpp A.cpp B.cpp C.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 
 
-NAME = Bureaucrat
+NAME = Identify
 
 all: $(NAME)
 

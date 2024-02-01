@@ -1,13 +1,8 @@
 #include "ScalarConvertion.hpp"
+#include "tools.hpp"
 #include <cstring>
 #include <climits>
 
-enum Type {
-    charType = 0,
-    intType = 1,
-    floatType =2,
-    doubleType = 3
-};
 
 int ScalarConvertion::intValue = 0;
 char ScalarConvertion::charValue = 0;
@@ -33,12 +28,6 @@ ScalarConvertion::~ScalarConvertion() {
 
 }
 
-bool psudoLiteral(std::string str) {
-    if (str == "nan" || str == "nanf" || str == "-inf" || str == "+inf" || str == "-inff" || str =="+inff")
-        return (true);
-    return (false);
-}
-
 void ScalarConvertion::printInt() {
     std::cout << "int: ";
     if (psudoLiteral(str))
@@ -49,10 +38,12 @@ void ScalarConvertion::printInt() {
 
 void ScalarConvertion::printChar() {
     std::cout << "char: ";
-    if (psudoLiteral(str))
+    if (psudoLiteral(str) || unprintable)
         std::cout << "impossible" << std::endl;
+    else if (!std::isprint(charValue))
+        std::cout<< "Non Displayable" << std::endl;
     else 
-        std::cout << charValue << std::endl;
+        std::cout << "'"<< charValue << "'" << std::endl;
 }
 
 void ScalarConvertion::printFloat() {
@@ -87,25 +78,50 @@ void ScalarConvertion::printDouble() {
         std::cout << doubleValue << std::endl;
 }
 
-bool isIntType(std::string str, size_t size) {
-
-}
-
-bool isFloatType(std::string str) {
-
-}
-
-int getType(std::string str) {
-    if (str.length() == 1 && (str[0] < 48 || str[0] > 57) && std::isprint(str[0]))
-		return (charType);
-    else if (isIntType(str, str.length()))
-        return (intType);
-    else if (isFloatType(str))
-        return(floatType);
-}
-
 void ScalarConvertion::convert(std::string parameter) {
     int type;
     type = getType(parameter);
-
+    str = parameter;
+    switch (type)
+    {
+    case charType:
+        charValue = static_cast<char>(parameter.at(0));
+        intValue  = static_cast<int>(charValue);
+        floatValue = static_cast<float>(charValue);
+        doubleValue = static_cast<double>(charValue);
+        break;
+    case intType:
+        intValue = atoi(parameter.c_str());
+        if (intValue < CHAR_MIN || intValue > CHAR_MAX)
+            unprintable = true;
+        else 
+            charValue = static_cast<char>(intValue);
+        floatValue = static_cast<float>(intValue);
+        doubleValue = static_cast<double>(intValue);
+        break;
+    case floatType:
+        floatValue = atof(parameter.c_str());
+        if(floatValue < CHAR_MIN || floatValue > CHAR_MAX)
+            unprintable = true;
+        else 
+            charValue = static_cast<char>(floatValue);
+        intValue = static_cast<int>(floatValue);
+        doubleValue = static_cast<double>(floatValue);
+        break;
+    case doubleType:
+        doubleValue = atof(parameter.c_str());
+        if(doubleValue < CHAR_MIN || doubleValue > CHAR_MAX)
+            unprintable = true;
+        else
+            charValue = static_cast<char>(doubleValue);
+        intValue = static_cast<int>(doubleValue);
+        floatValue = static_cast<float>(doubleValue);
+        break;
+    case noType:
+        break;
+    }
+    printChar();
+    printInt();
+    printFloat();
+    printDouble();
 }

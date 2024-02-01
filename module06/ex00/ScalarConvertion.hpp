@@ -1,9 +1,10 @@
 #ifndef SCALARCONVERTION_HPP
-#define SCALARCONBERTION_HPP
+#define SCALARCONVERTION_HPP
 
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include "tools.hpp"
 
 class ScalarConvertion
 {
