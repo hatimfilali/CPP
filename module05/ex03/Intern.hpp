@@ -9,6 +9,7 @@ class Intern {
         Intern();
         Intern(const Intern &copy);
         Intern &operator=(const Intern &copy);
+        ~Intern();
 
         AForm *makeForm(std::string name, std::string target);
         class InvalidFormException : public std::exception {

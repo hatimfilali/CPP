@@ -44,3 +44,7 @@ AForm *Intern::makeForm(std::string name, std::string target) {
     std::cout << "Intern creates " << *selected << std::endl;
     return selected;
 }
+
+Intern::~Intern() {
+    
+}

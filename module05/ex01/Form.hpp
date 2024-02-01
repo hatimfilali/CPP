@@ -32,9 +32,10 @@ class Form {
                     return "Too high grade.";
                 }
         };
+
         class GradeTooLowException : public std::exception {
             public :
-                const char *whta() const throw() {
+                const char *what() const throw() {
                     return "Too low grade.";
                 }
         };

@@ -47,6 +47,6 @@ class AForm {
                 }
         };
 };
-std::ostream &operator<<(std::ostream os, const AForm &value);
+std::ostream &operator<<(std::ostream &os, const AForm &value);
 
 #endif

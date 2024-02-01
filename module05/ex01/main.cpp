@@ -5,7 +5,7 @@ int main () {
     try
 	{
 		std::cout << "too low  Test" << std::endl;
-		Form f1("f1", 10, 60);
+		Form f1("f1", 220, 60);
 		std::cout << f1 << std::endl;
 	}
 	catch (Form::GradeTooLowException &e)
@@ -16,11 +16,11 @@ int main () {
 	{
 		std::cout << e.what() << std::endl;
 	}
-
+	std::cout << "\n";
 	try
 	{
 		std::cout << "too HIGH  Test" << std::endl;
-		Form f2("f2", 1, 1);
+		Form f2("f2", 0, 1);
 		std::cout << f2 << std::endl;
 	}
 	catch (Form::GradeTooLowException &e)
@@ -31,7 +31,7 @@ int main () {
 	{
 		std::cout << e.what() << std::endl;
 	}
-
+	std::cout << "\n";
 	try
 	{
 		Bureaucrat m_bure("b1", 70);

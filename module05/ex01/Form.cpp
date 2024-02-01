@@ -17,7 +17,7 @@ Form::Form(const Form &copy) : requiredGradeToSign(1), requiredGradeToExecute(1)
 Form::Form(std::string name, int requiredGradeToSign, int requiredGradeToExecute) : name(name), _signed(false), requiredGradeToSign(requiredGradeToSign), requiredGradeToExecute(requiredGradeToExecute) {
     if (requiredGradeToExecute < 1 || requiredGradeToSign < 1)
         throw Form::GradeTooHighException();
-    if (requiredGradeToExecute > 150 || requiredGradeToSign > 150)
+    else if (requiredGradeToExecute > 150 || requiredGradeToSign > 150)
         throw Form::GradeTooLowException();
 }
 

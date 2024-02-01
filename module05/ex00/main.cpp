@@ -2,7 +2,7 @@
 
 int main () {
     try {
-        std::cout << "When fine..."<< std::endl;
+        std::cout << "-------When fine...-------"<< std::endl;
         Bureaucrat fineBureaucrat("FineOne", 71);
         std::cout << fineBureaucrat << std::endl;
     }
@@ -14,7 +14,7 @@ int main () {
     }
 
     try {
-        std::cout << "Too low..." << std::endl;
+        std::cout << "-------When Too low-------" << std::endl;
         Bureaucrat tooLowOne("TooLow", 151);
         std::cout << tooLowOne << std::endl;
     }
@@ -26,7 +26,7 @@ int main () {
     }
 
     try {
-        std::cout << "Too High..." << std::endl;
+        std::cout << "-------When Too High-------" << std::endl;
         Bureaucrat tooHighOne("TooHigh", 0);
         std::cout << tooHighOne << std::endl;
     }
@@ -38,7 +38,7 @@ int main () {
     }
 
     try {
-        std::cout << "increment..." << std::endl;
+        std::cout << "-------Increment-------" << std::endl;
         Bureaucrat inc("Inc", 150);
         for (int i = 0; i < 150; i++) {
             inc.increment();
@@ -53,7 +53,7 @@ int main () {
     }
 
     try {
-        std::cout << "decrement..." << std::endl;
+        std::cout << "-------Decrement-------" << std::endl;
         Bureaucrat dec("Dec", 1);
         for (int i = 0; i < 150; i++) {
             dec.decrement();
