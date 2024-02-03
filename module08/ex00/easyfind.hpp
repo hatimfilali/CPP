@@ -22,7 +22,8 @@ class invaliValueException : public std::exception {
 template <typename T>
 typename T::value_type easyfind(T &container, int value) {
     typename T::iterator val = std::find(container.begin(), container.end(), value);
-    if (val = )
+    if (val == container.end())
+        throw(invaliValueException("This value is not found"));
+    return *val;
 }
-
 #endif
