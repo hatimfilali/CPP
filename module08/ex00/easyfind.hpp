@@ -5,25 +5,11 @@
 #include <algorithm>
 #include <iostream>
 
-
-class invaliValueException : public std::exception {
-
-    private :
-        const char *message;
-    public :
-        invaliValueException(const char *msg) : message(msg) {
-
-        }
-        const char *what() const throw() {
-            return message;
-        }
-};
-
 template <typename T>
 typename T::value_type easyfind(T &container, int value) {
     typename T::iterator val = std::find(container.begin(), container.end(), value);
     if (val == container.end())
-        throw(invaliValueException("This value is not found"));
+        throw std::runtime_error("This value is not found");
     return *val;
 }
 #endif

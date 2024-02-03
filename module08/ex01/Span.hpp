@@ -2,11 +2,15 @@
 #define SPAN_HPP
 #include <exception>
 #include <iostream>
-
+#include <vector>
+#include <algorithm>
+#include <numeric>
 class Span
 {
 private:
-    
+    std::vector<int> container;
+    unsigned int N;
+    bool isSorted;
 
 public:
     Span();
@@ -15,14 +19,10 @@ public:
     Span &operator=(const Span &copy);
     ~Span();
     void addNumber(int number);
-
-
-    class SpanFullException : public std::exception {
-        public :
-            const char *what() const throw(){
-                return "The Span is full.";
-            }
-    };
+    int shortestSpan();
+    int longestSpan();
+    void sort();
+    void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
     
 };
 
