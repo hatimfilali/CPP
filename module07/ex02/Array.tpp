@@ -6,7 +6,7 @@
 
 
 template <typename T>
-Array<T>::Array() : elements(nullptr), arraySize(0) {
+Array<T>::Array() : elements(NULL), arraySize(0) {
     
 }
 
