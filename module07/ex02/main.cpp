@@ -65,16 +65,16 @@ int main()
     std::cout << "\033[32m"
               << "Change Values of COPY_ASSINGMENT"
               << "\033[0m" << std::endl;
-    for (size_t i = 0; i < org.size(); i++)
-        org[i] = i + 2;
+    for (size_t i = 0; i < COPY_ASSINGMENT.size(); i++)
+        COPY_ASSINGMENT[i] = i + 2;
     std::cout << "*********************** \n"
               << std::endl;
 
     std::cout << "\033[32m"
               << "Change Values COPY_CONSTRUCTOR"
               << "\033[0m" << std::endl;
-    for (size_t i = 0; i < org.size(); i++)
-        org[i] = i - 2;
+    for (size_t i = 0; i < COPY_CONSTRUCTOR.size(); i++)
+        COPY_CONSTRUCTOR[i] = i - 2;
     std::cout << "*********************** \n"
               << std::endl;
 

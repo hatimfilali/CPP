@@ -3,18 +3,11 @@
 
 #include <iostream>
 
-template <typename T>
-void iter(T *ptr, int size, void (function)(T &)) {
+template <typename T, typename TT>
+void iter(T *ptr, int size, void (function)(TT )) {
     for (int i = 0; i < size; i++)
         function(ptr[i]);
 }
-
-template <typename T>
-void iter(const T *ptr, int size, void (function)(const T &)) {
-    for (int i = 0; i < size; i++)
-        function(ptr[i]);
-}
-
 
 template <typename T>
 void printer(T elem) {
