@@ -81,6 +81,7 @@ void BitcoinExchange::loadInfile() {
     std::string value;
     double btc_value;
     std::istringstream line_stream;
+    std::getline(this->infile, line);
     while (std::getline(this->infile, line)) {
         line_stream.str(line);
         line_stream >> str_date >> sep >> value;
@@ -108,7 +109,7 @@ void BitcoinExchange::validDate(std::string str) {
     range(v_date.year, 2009, INT_MAX);
     range(v_date.month, 1, 12);
     if (v_date.month == 2) {
-        if(v_date.year % 4 == 0 && v_date.year % 100 == 0 && v_date.year % 400 ==0)
+        if(v_date.year % 4 == 0 && (v_date.year % 100 == 0 && v_date.year % 400 != 0))
             range(v_date.day, 1, 29);
         else 
             range(v_date.day, 1, 28);
